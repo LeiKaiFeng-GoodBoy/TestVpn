@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestVpn.Android", "TestVpn\TestVpn.Android\TestVpn.Android.csproj", "{59DD1183-0A8F-440F-A489-FE7F032AACB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestVpn", "TestVpn\TestVpn\TestVpn.csproj", "{D1BD1069-4C59-4BFA-BF7C-A858D2607277}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DD1183-0A8F-440F-A489-FE7F032AACB7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BD1069-4C59-4BFA-BF7C-A858D2607277}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84451F1F-CE19-4A2F-9153-4D0678D3FA50}
+	EndGlobalSection
+EndGlobal
