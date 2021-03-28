@@ -56,7 +56,7 @@ namespace TestVpn.Droid
 
             var func = ServerHelper.CreateServerNotificationFunc("title", this, CHNNEL_ID);
 
-            this.StartForeground(ID, func("3466"));
+            this.StartForeground(ID, func("run"));
         }
 
         public override void OnCreate()
@@ -81,7 +81,7 @@ namespace TestVpn.Droid
 
                 Socket socket = new Socket(AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, ProtocolType.Udp);
 
-                //或许可行
+                
                 this.Protect(socket.Handle.ToInt32());
 
                 socket.Bind(new IPEndPoint(IPAddress.Any, IPEndPoint.Port));
@@ -261,11 +261,13 @@ namespace TestVpn.Droid
         {
             MyVpnService.IPEndPoint = endPoint;
 
-            var inter = VpnService.Prepare(this);
+            Intent inter = VpnService.Prepare(this);
 
-            //null没有权限,就询问
+            
             if (inter is null)
             {
+                //null已经有权限
+
                 this.OnActivityResult(0, Result.Ok, null);
             }
             else
