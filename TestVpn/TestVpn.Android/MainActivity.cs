@@ -66,6 +66,8 @@ namespace TestVpn.Droid
             var handle = new VpnService.Builder(this)
                 .AddAddress("192.168.2.2", 24)
                 .AddRoute("0.0.0.0", 0)
+                .AddAllowedApplication("com.android.chrome")
+                .AddAllowedApplication("com.companyname.yande.re")
                 .Establish();
 
             var inputStream = new ParcelFileDescriptor.AutoCloseInputStream(handle);
