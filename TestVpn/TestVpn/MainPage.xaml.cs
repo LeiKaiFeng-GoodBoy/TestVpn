@@ -11,16 +11,12 @@ namespace TestVpn
 {
     public sealed class MainPageInfo
     {
-        public MainPageInfo(Action<IPEndPoint> action, Action<IPEndPoint> startUdp)
+        public MainPageInfo(Action<IPEndPoint> action)
         {
             Action = action ?? throw new ArgumentNullException(nameof(action));
-            StartUdp = startUdp ?? throw new ArgumentNullException(nameof(startUdp));
         }
 
         public Action<IPEndPoint> Action { get; }
-
-
-        public Action<IPEndPoint> StartUdp { get; }
     }
 
 
@@ -31,8 +27,6 @@ namespace TestVpn
             InitializeComponent();
 
             m_start.Clicked += (obj, e) => info.Action(IPEndPoint());
-
-            m_startudp.Clicked += (obj, e) => info.StartUdp(IPEndPoint());
         }
 
 

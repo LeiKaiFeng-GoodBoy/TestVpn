@@ -7,6 +7,5 @@
         <Entry x:Name="m_ip" Text="192.168.1.106" WidthRequest="200"></Entry>
         <Entry x:Name="m_port" Text="5050" WidthRequest="200"></Entry>
         <Button x:Name="m_start" Text="Start" ></Button>
-        <Button x:Name="m_startudp" Text="UDP"></Button>
     </StackLayout>
 </ContentPage>

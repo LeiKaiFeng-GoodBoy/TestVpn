@@ -241,105 +241,6 @@ namespace TestVpn.Droid
     [Activity(Label = "TestVpn", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-
-        public static void UDPTest(IPEndPoint endPoint)
-        {
-            Task.Run(() =>
-            {
-
-                
-                Socket socket = new Socket(AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, ProtocolType.Udp);
-
-
-                socket.Bind(new IPEndPoint(IPAddress.Any, endPoint.Port));
-
-                socket.Connect(endPoint);
-
-               
-                Read(socket)
-                    .ContinueWith((t) =>
-                    {
-                        if (t.Exception != null)
-                        {
-                            MyVpnService.Log(t.Exception);
-                        }
-
-
-                    });
-
-
-                Write(socket)
-                    .ContinueWith((t) =>
-                    {
-
-                        if (t.Exception != null)
-                        {
-                            MyVpnService.Log(t.Exception);
-                        }
-
-                    });
-
-            }).ContinueWith((t) =>
-            {
-
-                if (t.Exception != null)
-                {
-                    MyVpnService.Log(t.Exception);
-                }
-
-            });
-
-
-        }
-
-
-        static Task Read(Socket socket)
-        {
-
-            return Task.Run(() =>
-            {
-                var vs = new byte[65535];
-                while (true)
-                {
-                    int n = 0;
-                    MyVpnService.Catch(() =>
-                    {
-
-                        n = socket.Receive(vs);
-
-                    });
-
-                    string s = Encoding.UTF8.GetString(vs, 0, n);
-
-
-                    MyVpnService.Log(s);
-                }
-            });
-
-            
-        }
-
-        static Task Write(Socket socket)
-        {
-            var vs = new string[] { "0", "123456", "fgsfsdfdsfdsfsd", "rere" };
-            return Task.Run(() =>
-            {
-                while (true)
-                {
-                    foreach (var item in vs)
-                    {
-                        var bu = Encoding.UTF8.GetBytes(item);
-
-                        MyVpnService.Catch(() => socket.Send(bu, 0, bu.Length, SocketFlags.None));
-                    }
-                }
-            });
-        }
-
-
-
-
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -352,18 +253,11 @@ namespace TestVpn.Droid
 
             Xamarin.Essentials.Permissions.RequestAsync<Permissions.StorageWrite>();
 
-            LoadApplication(new App(new MainPageInfo(CreateVpn, CraUdp)));
+            LoadApplication(new App(new MainPageInfo(CreateVpn)));
         }
-
-        void CraUdp(IPEndPoint endPoint)
-        {
-            UDPTest(endPoint);
-        }
-
 
         void CreateVpn(IPEndPoint endPoint)
         {
-
             MyVpnService.IPEndPoint = endPoint;
 
             var inter = VpnService.Prepare(this);
@@ -378,7 +272,6 @@ namespace TestVpn.Droid
                 this.StartActivityForResult(inter, 0);
             }
         }
-
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
