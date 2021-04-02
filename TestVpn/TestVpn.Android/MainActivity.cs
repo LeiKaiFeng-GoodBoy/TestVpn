@@ -69,6 +69,7 @@ namespace TestVpn.Droid
                 .AddRoute("0.0.0.0", 0)
                 .AddAllowedApplication("com.android.chrome")
                 .AddAllowedApplication("com.companyname.yande.re")
+                .AddAllowedApplication("com.companyname.testvpn")
                 .Establish();
 
             var inputStream = new ParcelFileDescriptor.AutoCloseInputStream(handle);
